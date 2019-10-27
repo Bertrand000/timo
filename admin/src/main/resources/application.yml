@@ -1,10 +1,13 @@
 ### 服务器配置
+
 server:
   port: 8080
+  servlet:
+    context-path: /football_cms               #项目访问路径
 
 ### TIMO配置
 project:
-  captcha-open: false                         #是否开启登录验证码
+  captcha-open: true                         #是否开启登录验证码
   shiro:
     remember-me-timeout: 7                    #cookie记住登录信息时间，默认7天（天）
     global-session-timeout: 1800              #Session会话超时时间，默认30分钟（秒）
@@ -17,12 +20,20 @@ spring:
 ## 数据库配置
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/timo?useSSL=false&characterEncoding=utf-8
+    url: jdbc:mysql://106.12.22.115/timo?useSSL=false&characterEncoding=utf-8
     username: root
-    password: root
+    password: 123456
+    ## 数据源配置
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      pool-name: KevinHikariPool
+      maximum-pool-size: 12
+      connection-timeout: 60000
+      minimum-idle: 10
+      idle-timeout: 500000
+      max-lifetime: 30000
+      connection-test-query: select 1
 
-## jpa配置
-  jpa:
     show-sql: true
     hibernate:
       ddl-auto: update
@@ -35,7 +46,7 @@ spring:
   thymeleaf:
     prefix: classpath:/templates
     suffix: .html
-    mode: HTML
+    mode: LEGACYHTML5
     encoding: utf-8
     servlet.content-type: text/html
     cache: false

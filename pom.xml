@@ -111,5 +111,13 @@
             <artifactId>annotations</artifactId>
             <version>${google.findbugs.version}</version>
         </dependency>
+
+        <!--thymeleaf去严格检查依赖-->
+        <dependency>
+            <groupId>net.sourceforge.nekohtml</groupId>
+            <artifactId>nekohtml</artifactId>
+            <version>1.9.22</version>
+        </dependency>
+
     </dependencies>
 </project>
